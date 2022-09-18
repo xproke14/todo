@@ -1,0 +1,56 @@
+{% extends "categories/base.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap_icons %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="dropdown show">
+      <a class="h3 dropdown-toggle text-dark d-flex justify-content-center mt-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ cur_cat }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for cat in all_cats %}
+          <a class="dropdown-item" href="{% url 'category' cat.id %}">{{ cat }}</a>
+        {% endfor %}
+        <a class="dropdown-item border-top text-secondary" href="{% url 'category_edit' cur_cat.id%}">{% bs_icon 'pencil-fill' %}</a>
+        {% if count > 1 %}
+        <a class="dropdown-item text-danger" href="{% url 'category_delete' cur_cat.id%}">{% bs_icon 'x-lg' %}</a>
+        {% endif %} 
+        <a class="dropdown-item text-info" href="{% url 'category_create' %}">New Category</a>
+      </div>
+    </div>
+  </div> <!-- /column-->
+  <div class="col-sm-3 mt-4"></div>
+</div>
+
+<ul class="list-group list-group-flush p-4">
+  <li class="list-group-item"> 
+    <form method="POST">
+        {% csrf_token %}
+        {{ task_form.name }} 
+        <button class="btn btn-outline-info btn-sm" type="submit">New</button>
+    </form>
+  </li>
+
+  {% for task in tasks %}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm-8 col-7">
+            {% if task.done %}
+                <del>{{ task }}</del>
+            {% else %}
+                {{ task }}
+            {% endif %}
+          
+        </div>
+        <div class="col-sm-4 col-5">
+          <a class="btn btn-outline-secondary btn-sm" href="{% url 'task_edit' task.id %}">{% bs_icon 'pencil-fill' %}</a>
+          <a class="btn btn-outline-danger btn-sm" href="{% url 'task_delete' task.id %}">{% bs_icon 'x-lg' %}</a>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}

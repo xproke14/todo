@@ -1,0 +1,7 @@
+Dear User, 
+
+Your account in ToDo app has been registered with {{ email }} email address.
+
+Best regards, 
+
+ToDo Team

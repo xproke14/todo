@@ -1,0 +1,13 @@
+{% extends "categories/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <form method="POST">
+    {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-2">Enter new category name</legend>
+                {{ form.name }}
+            <button class="btn btn-info btn-sm" type="submit">Create</button>
+            <a class="btn btn-secondary btn-sm" href="{% url 'main' %}">Cancel</a>
+        </fieldset>
+</form>
+{% endblock content %}

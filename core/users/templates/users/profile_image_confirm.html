@@ -1,0 +1,15 @@
+{% extends 'categories/base.html' %}
+{% load static %}
+{% block content %}
+<div class="media">  
+    <img src="{% static image %}" alt="Profile picture" class="profile-pic">
+    <div class="media-body ml-5">
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-info">Choose picture</button>
+        </form>
+        <a class="btn btn-secondary mt-2" href="{% url 'profile_image' user.id %}">Cancel</a>
+    </div>
+</div>
+
+{% endblock content %}

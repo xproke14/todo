@@ -1,0 +1,14 @@
+{% extends 'categories/base.html' %}
+{% load static %}
+{% block content %}
+<div class="media">
+    <img src="{{ object.image.url }}" alt="Profile picture" class="profile-pic">
+    <div class="media-body ml-5">
+        <h5> {{user.email}} </h5>
+        <div>Categories total: {{ cat_count }}</div>
+        <div>Tasks total: {{ task_count }}</div>
+    </div>
+</div>
+<div class="mt-1"><a class="text-muted" href="{% url 'profile_image' object.id %}">Change Picture</a></div>
+<div><a class="text-muted" href="{% url 'password_change' %}">Change Password</a></div>
+{% endblock content%}
