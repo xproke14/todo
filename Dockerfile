@@ -13,14 +13,9 @@ EXPOSE 8000
 ENV PYTHONBUFFERED 1
 
 RUN pip install -r /requirements.txt && \
+    # create a non-root user to be used in /run.sh file
     adduser --disabled-password --no-create-home appuser && \
-    mkdir -p /vol/static && \
-    mkdir -p /vol/media && \
-    chown -R appuser:appuser /vol && \
-    chmod -R 755 /vol
-
-# run as root
+    chmod +x /run.sh
+    
 CMD ["/run.sh"]
 
-# compose cmd run as appuser
-USER appuser

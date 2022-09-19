@@ -10,4 +10,8 @@ Celery with Redis is used to send welcome emails but only in a dev compose file 
 
 # Run code
 
-Probably the easiest way how to run this code is to create .env file from .env.sample file. Enter your public IP into ALLOWED_HOSTS. You can keep other fields as they are as emailing is not in production version (it is a Celery task which is only in dev - as described above).
+1. Using docker-compose-dev.yml:  
+Create .env file from .env.sample file. Set DEBUG=1 to be served staticfiles without a web server. You can keep other fields as they are as emailing is commented out in a compose file and in the Django code (signals.py under users app).  
+
+2. Using docker-compose-prod.yml:  
+Create .env file from .env.sample file. Enter your public IP into ALLOWED_HOSTS. You can keep other fields as they are as emailing is not in production compose file.
