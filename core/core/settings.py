@@ -18,6 +18,7 @@ DEBUG = bool(int(os.environ.get('DEBUG')))
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS.extend(os.environ.get('ALLOWED_HOSTS').split(','))
 
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS').split(',')
 
 # Application definition
 
