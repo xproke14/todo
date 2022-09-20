@@ -9,5 +9,3 @@ RUN mkdir -p /vol/static && \
     chmod -R 755 /vol/static && \
     mkdir -p /vol/media && \
     chmod -R 755 /vol/media
-
-USER nginx
