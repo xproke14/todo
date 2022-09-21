@@ -1,20 +1,29 @@
 {% extends "categories/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="mb-2 display-4 border-bottom">Welcome!</h1>
+        <p class="d-none d-sm-block lead pt-2">Write down and categorize your daily tasks with the ToDo App!</p>
+        <p class="lead">
+            Log in below or 
+            <a href="{% url 'register' %}" class="text-info">create an account</a>
+        </p>
+    </div>
+  </div>
+
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
         <legend class="border-bottom mb-4">Log In</legend>
         {{ form|crispy }}
     </fieldset>
-    <button class="btn btn-outline-info mt-1" type="submit">Sign Up</button>
+    <button class="btn btn-outline-info mt-1" type="submit">Sign In</button>
 </form>
 
 <div class="border-top mt-4 mb-2 text-muted">
     Need an account?
     <a href="{% url 'register' %}" class="text-info">Sign Up</a>
 </div>
-
-
 
 {% endblock %}
